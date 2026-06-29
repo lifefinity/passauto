@@ -1,0 +1,38 @@
+version: "2"
+
+run:
+  timeout: 3m
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - unused
+    - ineffassign
+    - gosec
+    - revive
+    - misspell
+
+  settings:
+    gosec:
+      excludes:
+        - G101
+        - G204
+        - G304
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+
+  exclusions:
+    paths:
+      - testdata
+
+formatters:
+  enable:
+    - gofmt
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0

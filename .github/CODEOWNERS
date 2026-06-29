@@ -1,0 +1,6 @@
+# Default owner for everything
+* @lifefinity
+
+# Security-sensitive paths require explicit review
+internal/crypto/ @lifefinity
+SECURITY.md @lifefinity
