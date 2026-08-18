@@ -42,14 +42,14 @@ func probeSecretService() bool {
 		return false
 	}
 	if err = conn.Auth(nil); err != nil {
-		conn.Close()
+		_ = conn.Close()
 		return false
 	}
 	if err = conn.Hello(); err != nil {
-		conn.Close()
+		_ = conn.Close()
 		return false
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 
 	var hasOwner bool
 	err = conn.BusObject().Call("org.freedesktop.DBus.NameHasOwner", 0, secretServiceName).Store(&hasOwner)
